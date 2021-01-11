@@ -10,18 +10,18 @@
 
         <Label 
             FontSize="Title"
-            Text ="Welcome to 5250">
+            Text ="Welcome to 5250 Audio Sandbox">
         </Label>
 
         <Label 
             FontSize="Large"
-            Text ="Take a screen shot of this page">
+            Text ="This project is for developing an audio API">
         </Label>
-
-        <Label 
-            FontSize="Large"
-            Text ="Submit to Canvas">
-        </Label>
+        <Button
+            FontSize="Medium"
+            Text="Press Me!"
+            Clicked="OnButtonClicked">
+        </Button>
 
     </StackLayout>
 

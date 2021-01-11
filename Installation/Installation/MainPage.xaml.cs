@@ -14,5 +14,12 @@ namespace Installation
         {
             InitializeComponent();
         }
+
+        // TODO - make async?
+        void OnButtonClicked(object sender, EventArgs args)
+        {
+            Button button = sender as Button;
+            button.Text = "Button Pressed!"; 
+        }
     }
 }
