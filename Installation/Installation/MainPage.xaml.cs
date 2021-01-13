@@ -9,53 +9,26 @@ using System.Reflection;
 using Xamarin.Forms;
 using Plugin.SimpleAudioPlayer;
 
-// Simple sound implementation based on the approach described here:
+
+// Cross platform Xamarin audio API using the SimpleAudioPlayer
 // https://devblogs.microsoft.com/xamarin/adding-sound-xamarin-forms-app/
+// and here: https://github.com/adrianstevens/Xamarin-Plugins/tree/master/SimpleAudioPlayer
 namespace Installation
 {   
-    public enum SoundType
-    {
-        ButtonClickTest,
-        count
-    }
 
     public partial class MainPage : ContentPage
     {
-        ISimpleAudioPlayer[] players = new ISimpleAudioPlayer[(int)SoundType.count];
-
         public MainPage()
         {
             InitializeComponent();
-            SetupSounds();
         }
-        void SetupSounds()
-        {
-            for (int i = 0; i < (int)SoundType.count; i++)
-            {
-                players[i] = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
-                players[i].Loop = false;
-            }
-            LoadSounds();
-        }
-
-        void LoadSounds()
-        {
-            // TODO replace hardcoded Solution and Folder names
-            players[(int)SoundType.ButtonClickTest].Load(GetStreamFromFile("Installation.Audio.BtnClick.wav"));
-        }
-
-        Stream GetStreamFromFile(string filename)
-        {
-            var assembly = typeof(App).GetTypeInfo().Assembly;
-            var stream = assembly.GetManifestResourceStream(filename);
-
-            return stream;
-        }
-
-        // TODO - make async?
+      
+        // TODO make async
         void OnButtonClicked(object sender, EventArgs args)
         {
-            players[0].Play();
+            buttonSound.Play();
         }
+
+        private AudioClip buttonSound = new AudioClip(filepath: "Installation.Audio.BtnClick.wav", loop: false);
     }
 }
