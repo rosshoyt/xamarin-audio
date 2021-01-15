@@ -39,6 +39,10 @@ namespace Installation
             player.Play();
         }
      
+        public void Stop()
+        {
+            player.Stop();
+        }
         private void Load()
         {
             player.Load(GetStreamFromFile(filepath));
